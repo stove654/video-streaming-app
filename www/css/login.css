@@ -1,0 +1,29 @@
+.login-view {
+  background-color: #f3f3f3;
+}
+.login-view .country {
+  color: #888;
+  display: block;
+  padding: 10px;
+  height: 48px;
+  line-height: 27px;
+  font-size: 13px;
+}
+.login-view .country i {
+  font-size: 20px;
+  margin-top: 3px;
+}
+.login-view .country.activated {
+  background-color: #f2f2f2;
+}
+.login-view .phone-number {
+  padding: 6px 10px;
+  font-size: 13px;
+}
+.login-view .phone-number.error {
+  border: 1px solid red;
+}
+.login-view .start button {
+  padding: 0 30px;
+  border-radius: 30px;
+}

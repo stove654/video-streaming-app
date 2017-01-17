@@ -1,0 +1,47 @@
+<ion-view class="tab-call-view">
+    <ion-header-bar class="bar-light">
+        <div class="title">
+            <div class="content">
+                <a ng-click="searchText = {}" ng-class="{active: !searchText.status}">All</a>
+                <a ng-click="searchText = {status: 1}" ng-class="{active: searchText.status}">Missed</a>
+            </div>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+
+        <img src="./img/no-call.png" alt="" class="img-responsive img-no-call" ng-if="!data.calls.length">
+
+
+        <ion-list ng-if="data.calls.length">
+
+            <ion-item item="item" class="item-avatar" ng-repeat="item in data.calls | filter:searchText">
+                <img ng-src="{{item.to.avatar}}" ng-if="item.from._id == rootData.user._id">
+                <img ng-src="{{item.from.avatar}}" ng-if="item.from._id != rootData.user._id">
+
+                <h2 ng-if="item.from._id == rootData.user._id">{{item.to.phone}}</h2>
+                <h2 ng-if="item.from._id != rootData.user._id">{{item.from.phone}}</h2>
+
+                <p ng-if="item.from._id == rootData.user._id && item.status == 1"><i class="ion-ios-redo-outline balanced"></i> Outgoing call</p>
+                <p ng-if="item.from._id != rootData.user._id && item.status == 1"><i class="ion-ios-undo-outline assertive"></i> Missed call</p>
+
+                <p ng-if="item.from._id == rootData.user._id && item.status == 2"><i class="ion-ios-redo-outline balanced"></i> Outgoing call</p>
+                <p ng-if="item.from._id != rootData.user._id && item.status == 2"><i class="ion-ios-undo-outline balanced"></i> Incoming call</p>
+
+                <p ng-if="item.from._id == rootData.user._id && item.status == 3"><i class="ion-ios-redo-outline balanced"></i> Outgoing call</p>
+                <p ng-if="item.from._id != rootData.user._id && item.status == 3"><i class="ion-ios-undo-outline assertive"></i> Canceled call</p>
+
+                <span class="time">{{item.createdAt | date:'short'}}</span>
+
+                <div class="icon-call">
+                    <i class="ion ion-ios-telephone royal"></i>
+                </div>
+
+                <ion-option-button class="button-assertive horizontal layout center center-justified" ng-click="delete(item, $index)">
+                    <i class="ion ion-trash-a"></i>
+                </ion-option-button>
+            </ion-item>
+
+        </ion-list>
+
+    </ion-content>
+</ion-view>

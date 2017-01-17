@@ -1,0 +1,22 @@
+<ion-view class="login-view">
+    <ion-header-bar class="bar-royal">
+        <div class="title">Viber verify</div>
+    </ion-header-bar>
+    <ion-content scroll="false">
+        <div class="bold login-label padding">
+            Enter your code number
+        </div>
+        <div class="list">
+            <label class="item item-input country" ng-click="openModal()">
+                <span>{{data.user.phone}}</span>
+            </label>
+            <label class="item item-input phone-number" ng-class="{error: data.err}">
+                <input type="text" placeholder="Number with the contry code" ng-model="data.user.code">
+            </label>
+        </div>
+
+        <div class="start text-center">
+            <button class="button button-royal" ng-disabled="!data.user.code" ng-click="verify()">Continue</button>
+        </div>
+    </ion-content>
+</ion-view>

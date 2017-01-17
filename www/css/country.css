@@ -1,0 +1,17 @@
+.country-view {
+  background-color: #f3f3f3;
+}
+.country-view .ion-ios-checkmark-empty {
+  display: none;
+}
+.country-view .list {
+  margin-bottom: 0;
+}
+.country-view .list .item.royal .ion-ios-checkmark-empty {
+  display: block;
+  font-size: 32px;
+  margin-right: 40px;
+  position: absolute;
+  right: 0;
+  top: 10px;
+}

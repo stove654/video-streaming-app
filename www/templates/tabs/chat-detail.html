@@ -1,0 +1,44 @@
+<ion-view class="chat-detail-view">
+    <ion-header-bar class="bar-light">
+        <button class="button button-icon icon ion-ios-arrow-left" ui-sref="tab.chats"></button>
+        <div class="title" ng-ig="data.chanel.isPrivate">
+            <span ng-repeat="item in data.chanel.users" ng-if="item.user._id != rootData.user._id">{{item.name}}</span>
+        </div>
+        <div class="buttons">
+            <button class="button button-icon icon ion-trash-a" ng-click="clearChat()" ng-if="!data.chanel.isPrivate"></button>
+            <button class="button button-icon icon ion-android-close" ng-click="leaveGroup()" ng-if="!data.chanel.isPrivate"></button>
+        </div>
+
+
+    </ion-header-bar>
+    <ion-content class="padding has-subfooter">
+        <ul class="messages">
+            <li ng-repeat="item in data.messages" ng-class="{'from': item.from == rootData.user._id}" ng-if="item.text || item.image">
+                <p ng-bind-html="item.text | emoji" ng-if="item.text"></p>
+                <div class="image" ng-if="item.image">
+                    <img ng-src="{{item.image}}" alt="" class="img-reponsive">
+                </div>
+                <div class="time">{{item.updatedAt | date:'short'}}</div>
+            </li>
+        </ul>
+    </ion-content>
+    <ion-footer-bar class="bar bar-subfooter">
+        <div class="input-chat horizontal layout center">
+            <input type="text" placeholder="Type a message..." ng-model="data.message.text">
+            <button class="button button-royal button-send" ng-click="addMessage()">
+                <i class="ion ion-ios-paperplane-outline" ></i>
+            </button>
+            <!--<button class="button button-royal horizontal layout center center-justified button-send" ng-if="!data.message.text" record-voice-message="addVoiceMessage(url)">-->
+                <!--<i class="ion ion-ios-mic-outline" ></i>-->
+            <!--</button>-->
+
+
+        </div>
+        <div class="add-emoji horizontal layout center">
+            <i class="ion ion-happy-outline" ng-click="modal.show()"></i>
+            <i class="ion ion-image" ngf-select ng-model="data.file" name="fileImage" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="5MB"></i>
+        </div>
+
+    </ion-footer-bar>
+</ion-view>
+

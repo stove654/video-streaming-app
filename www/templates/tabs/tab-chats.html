@@ -1,0 +1,37 @@
+<ion-view class="chat-view">
+    <ion-header-bar class="bar-light">
+        <button class="button button-icon icon ion-ios-people-outline" ng-click="modalGroup.show()"></button>
+        <div class="tab-contact title">
+            <div class="content">
+                <a ng-click="searchText = null; scrollToTop();" ng-class="{active: searchText == null}">All</a>
+                <a ng-click="searchText = {isPrivate: false}; scrollToTop();" ng-class="{active: searchText != null}">Groups</a>
+            </div>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+
+        <ion-list>
+
+            <ion-item item="item" class="item-avatar" ng-class="{'not-read': isReadChat(chanel.users)}"
+                      ng-repeat="chanel in data.chats | filter:searchText" ng-click="detailChanel(chanel)" ng-if="chanel.lastMessage">
+                <img ng-src="{{item.user.avatar}}" ng-repeat="item in chanel.users"
+                     ng-if="chanel.isPrivate && item.user._id != rootData.user._id">
+
+                <img ng-src="{{chanel.avatar}}" alt="" ng-if="!chanel.isPrivate">
+
+                <h2><span ng-repeat="item in chanel.users"
+                          ng-if="item.user._id != rootData.user._id">{{item.name}} </span></h2>
+
+                <div class="time" am-time-ago="chanel.updatedAt"></div>
+                <p ng-bind-html="chanel.lastMessage | emoji"></p>
+                <span class="number-read assertive-bg"
+                      ng-if="isReadChat(chanel.users)">{{isReadChat(chanel.users)}}</span>
+                <ion-option-button class="button-assertive horizontal layout center center-justified" ng-click="delete(chanel, $index)">
+                    <i class="ion ion-trash-a"></i>
+                </ion-option-button>
+            </ion-item>
+
+        </ion-list>
+
+    </ion-content>
+</ion-view>

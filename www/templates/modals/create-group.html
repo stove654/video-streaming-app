@@ -1,0 +1,50 @@
+<ion-modal-view class="create-group">
+    <ion-header-bar class="bar-light">
+        <button class="button button-icon icon ion-ios-close-empty" ng-click="modalGroup.hide()"></button>
+        <div class="tab-contact title">
+            Select Contacts
+        </div>
+        <button class="button button-default" ng-click="createGroup()">
+            Done
+        </button>
+
+    </ion-header-bar>
+    <div class="bar bar-subheader">
+        <label class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="text" placeholder="Search" ng-model="searchText">
+        </label>
+    </div>
+    <ion-content class="create-group-view has-subheader">
+        <ion-list>
+            <div ng-repeat="item in data.contacts">
+                <ion-checkbox ng-repeat="user in item.users | filter:searchText" ng-if="rootData.user._id != user._id && user.active" ng-model="user.selected">
+                    <img ng-src="{{user.avatar}}" alt="" class="img-responsive default-avatar" width="40" height="40">
+                    <span ng-if="user.name.formatted">{{user.name.formatted}}</span>
+                    <span ng-if="!user.name.formatted">{{user.phoneNumbers[0].value}}</span>
+                    <p>{{user.phoneNumbers[0].value}}</p>
+                    <img src="./img/icon-phone.png" alt="" class="img-responsive icon-phone" ng-if="user.active">
+                </ion-checkbox>
+            </div>
+
+        </ion-list>
+        <!--<div class="list">-->
+            <!--<div ng-repeat="item in rootData.user.contacts | orderBy:'char'">-->
+                <!--<div class="item item-divider" ng-if="!searchText">-->
+                    <!--<span ng-if="item.char != 'undefined'">{{item.char}}</span>-->
+                    <!--<span ng-if="item.char == 'undefined'">Anonymous</span>-->
+                <!--</div>-->
+
+                <!--<a class="item" ng-repeat="user in item.users | filter:searchText" ng-if="rootData.user._id != user._id || !user.active">-->
+                    <!--<img src="./img/profile_avatar_default.png" alt="" class="img-responsive default-avatar">-->
+                    <!--<span ng-if="user.name.formatted">{{user.name.formatted}}</span>-->
+                    <!--<span ng-if="!user.name.formatted">{{user.phoneNumbers[0].value}}</span>-->
+                    <!--<p>{{user.phoneNumbers[0].value}}</p>-->
+
+                    <!--<img src="./img/icon-phone.png" alt="" class="img-responsive icon-phone" ng-if="user.active">-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    </ion-content>
+</ion-modal-view>
+

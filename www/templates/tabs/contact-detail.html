@@ -1,0 +1,78 @@
+<ion-view class="contact-detail-view bg-app">
+    <ion-header-bar class="bar-light">
+        <button class="button button-icon icon ion-ios-arrow-left" ui-sref="tab.contacts"></button>
+        <div class="title">
+            {{data.contact.name.formatted}}
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div ng-if="data.user._id">
+            <div class="bg-contact horizontal layout center center-justified">
+                <img ng-src="{{data.user.avatar}}" alt="" class="img-responsive">
+            </div>
+
+            <div class="horizontal layout contact-button" >
+                <div class="flex text-center">
+                    <button class="button button-royal" ng-click="openVideoView()">
+                        Free Call
+                    </button>
+                </div>
+                <div class="flex text-center">
+                    <button class="button button-royal" ng-click="createPrivateChat()">
+                        Free Message
+                    </button>
+                </div>
+            </div>
+
+            <div class="list">
+                <div class="item item-divider">
+                    {{data.contact.phoneNumbers[0].value}}
+                </div>
+
+                <a class="item item-icon-left">
+                    <i class="icon ion-ios-videocam-outline"></i>
+                    Free Video Call
+                </a>
+
+                <a class="item item-icon-left">
+                    <i class="icon ion-ios-telephone-outline"></i>
+                    Viber Out Call
+                </a>
+
+            </div>
+        </div>
+
+        <div ng-if="!data.user._id">
+            <div class="bg-contact horizontal layout center center-justified">
+                <img src="./img/profile_avatar_default.png" alt="" class="img-responsive">
+            </div>
+
+            <div class="horizontal layout contact-button">
+                <div class="flex text-center">
+                    <button class="button button-royal">
+                        Viber Out Call
+                    </button>
+                </div>
+                <div class="flex text-center">
+                    <button class="button button-royal">
+                        Invite To Viber
+                    </button>
+                </div>
+            </div>
+
+            <div class="list">
+                <div class="item item-divider">
+                    {{data.contact.phoneNumbers[0].value}}
+                </div>
+
+                <a class="item item-icon-left">
+                    <i class="icon ion-ios-videocam-outline"></i>
+                    Viber Out Call
+                    <p class="balanced">Low-cost calling rates!</p>
+                </a>
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

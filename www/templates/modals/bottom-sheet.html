@@ -1,0 +1,17 @@
+<ion-bottom-sheet-view class="emoji-modal">
+    <ion-header-bar class="horizontal layout center">
+        <ul class="flex horizontal layout center">
+            <li ng-repeat="item in data.icons" class="vertical layout end" ng-class="{active: data.selectEmoji.url == item.url}" ng-click="selectGroupIcon($index)">
+                <img ng-src="./vendor/emoji/images/{{item.url}}" alt="" width="24" height="24">
+            </li>
+        </ul>
+        <button class="button button-icon icon ion-android-close" ng-click="modal.hide()"></button>
+    </ion-header-bar>
+    <ion-content>
+        <ul>
+            <li ng-repeat="item in data.selectEmoji.icons" ng-click="addIcon(item)">
+                <img ng-src="./vendor/emoji/images/{{item.url}}" alt="" width="24" height="24">
+            </li>
+        </ul>
+    </ion-content>
+</ion-bottom-sheet-view>

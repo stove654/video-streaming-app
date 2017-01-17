@@ -1,0 +1,45 @@
+.intro-view {
+  background-color: #f3f3f3;
+  background: url(../img/background.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.intro-view .logo {
+  max-width: 125px;
+  margin: 0 auto;
+  padding: 40px 10px;
+}
+.intro-view h1 {
+  font-weight: 300;
+  text-align: center;
+  max-width: 150px;
+  margin: 0 auto;
+  color: #393939;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.intro-view .slogan {
+  padding: 10px;
+  max-width: 300px;
+  font-size: 15px;
+  margin: 0 auto;
+  color: #616161;
+  padding-bottom: 40px;
+}
+.intro-view .term {
+  color: #616161;
+  max-width: 250px;
+  margin: 0 auto;
+  font-size: 13px;
+  line-height: 16px;
+  padding-bottom: 20px;
+}
+.intro-view .term a {
+  color: #616161;
+}
+.intro-view .start button {
+  padding: 0 30px;
+  border-radius: 30px;
+}

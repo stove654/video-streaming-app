@@ -1,0 +1,99 @@
+<ion-view view-title="Account" class="tab-account">
+    <ion-header-bar class="bar-light">
+        <div class="title">
+            More
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="bg-contact horizontal layout center center-justified">
+            <img ng-src="{{rootData.user.avatar}}" alt="" class="img-responsive">
+            <i class="ion ion-edit" ngf-select ng-model="rootData.file" name="fileImage" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="5MB"></i>
+        </div>
+
+        <div class="games">
+            <h3>Viber Game</h3>
+            <ion-scroll  direction="x" style="width: 100%;" class="list-game">
+                <ul>
+                    <li>
+                        <img src="./img/hack-game-dragon-hills-cho-android-mien-phi.png" alt="" class="img-responsive">
+                    </li>
+                    <li>
+                        <img src="./img/2game-logo-kiem-khach-3d-vtc-ban-chuan.png" alt="" class="img-responsive">
+                    </li>
+                    <li>
+                        <img src="./img/2game_logo_chin_hdo_mobile_chuan.png" alt="" class="img-responsive">
+                    </li>
+                    <li>
+                        <img src="./img/2016-05-1463393770-logo-tam-quoc-trieu-hoi-9gate-200x200-1000.jpg" alt="" class="img-responsive">
+                    </li>
+                    <li>
+                        <img src="./img/a31567b4b603331c57023ffd8107b4a0.jpg" alt="" class="img-responsive">
+                    </li>
+                    <li>
+                        <img src="./img/hack-game-dragon-hills-cho-android-mien-phi.png" alt="" class="img-responsive">
+                    </li>
+                    <li>
+                        <img src="./img/2game-logo-kiem-khach-3d-vtc-ban-chuan.png" alt="" class="img-responsive">
+                    </li>
+                    <li>
+                        <img src="./img/a31567b4b603331c57023ffd8107b4a0.jpgg" alt="" class="img-responsive">
+                    </li>
+                    <li>
+                        <img src="./img/2game_logo_chin_hdo_mobile_chuan.png" alt="" class="img-responsive">
+                    </li>
+                </ul>
+            </ion-scroll>
+        </div>
+        <div class="list">
+            <div class="item item-divider">
+                {{rootData.user.phone}}
+            </div>
+
+            <a class="item item-icon-left">
+                <i class="icon ion-social-facebook-outline"></i>
+                Share Viber with friends
+            </a>
+
+            <a class="item item-icon-left">
+                <i class="icon ion-ios-telephone-outline"></i>
+                Viber Out
+            </a>
+
+            <a class="item item-icon-left">
+                <i class="icon ion-happy-outline"></i>
+                Sticker Market
+            </a>
+
+            <a class="item item-icon-left">
+                <i class="icon ion-ios-game-controller-b-outline"></i>
+                Viber Games
+            </a>
+
+            <a class="item item-icon-left">
+                <i class="icon ion-ios-people-outline"></i>
+                Add Contact
+            </a>
+
+            <a class="item item-icon-left">
+                <i class="icon ion-gear-a"></i>
+                Settings
+            </a>
+
+            <a class="item item-icon-left">
+                <i class="icon ion-qr-scanner"></i>
+                QR code scanner
+            </a>
+
+            <a class="item item-icon-left">
+                <i class="icon ion-ios-information-outline"></i>
+                About
+            </a>
+
+            <a class="item item-icon-left" ng-click="logOut()">
+                <i class="icon ion-log-out"></i>
+                Logout
+            </a>
+
+        </div>
+    </ion-content>
+</ion-view>

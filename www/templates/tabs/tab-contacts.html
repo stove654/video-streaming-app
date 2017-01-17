@@ -1,0 +1,38 @@
+
+<ion-view class="contacts-view">
+    <ion-header-bar class="bar-light">
+        <div class="tab-contact title">
+            <div class="content">
+                <a ng-click="searchText = {active: true}; scrollToTop();" ng-class="{active: searchText.active}">Viber</a>
+                <a ng-click="searchText = {}; scrollToTop();" ng-class="{active: !searchText.active}">All</a>
+            </div>
+        </div>
+        <button class="button button-icon icon ion-ios-plus-empty"></button>
+    </ion-header-bar>
+    <div class="bar bar-subheader">
+        <label class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="text" placeholder="Search" ng-model="searchText.name.formatted">
+        </label>
+    </div>
+    <ion-content class="has-subheader">
+        <div class="list">
+            <div ng-repeat="item in rootData.user.contacts | orderBy:'char' | filter:searchChar">
+                <div class="item item-divider" ng-if="!searchText.active && !searchText.name.formatted">
+                    <span ng-if="item.char != 'undefined'">{{item.char}}</span>
+                    <span ng-if="item.char == 'undefined'">Anonymous</span>
+                </div>
+
+                <a class="item" ng-repeat="user in item.users | filter:searchText" ng-click="goDetailContact($index, user)" ng-hide="rootData.user._id == user._id">
+                    <img src="./img/profile_avatar_default.png" alt="" class="img-responsive default-avatar" ng-if="!user.avatar">
+                    <img ng-src="{{user.avatar}}" alt="" class="img-responsive default-avatar" ng-if="user.avatar">
+                    <span ng-if="user.name.formatted">{{user.name.formatted}}</span>
+                    <span ng-if="!user.name.formatted">{{user.phoneNumbers[0].value}}</span>
+                    <p>{{user.phoneNumbers[0].value}}</p>
+
+                    <img src="./img/icon-phone.png" alt="" class="img-responsive icon-phone" ng-if="user.active">
+                </a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
